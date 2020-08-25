@@ -1,3 +1,5 @@
+root_includedir = include_directories('include')
+
 # Handle installation of headers
 subdir('include')
 
