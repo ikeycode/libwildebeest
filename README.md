@@ -19,10 +19,7 @@ preferred.
 
 Our goal is simple, centralise extensive patchwork that seeks to recreate
 libgcc_s/glibc compatibility in each program, instead of patching those
-into every single software package. Minor patching will of course be
-required to **integrate** libwildebeest, but as we've indicated, this
-is not a long-term solution. Upstream is where all issues eventually are
-solved.
+into every single software package.
 
 ## TODO
 
