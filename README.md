@@ -28,7 +28,7 @@ This list will be growing over time as we encounter more areas
 of incompatibility.
 
  - `parse_printf_format` / `printf.h`
- - `strdupa` & `strndupa` / `string.h`
+ - `strndupa` / `string.h`
  - `strtoull_l` & `strtoll_l` / `string.h`
 
 Potential musl function replacements for non-POSIX expectation:
