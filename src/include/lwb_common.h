@@ -22,17 +22,18 @@
  * SOFTWARE.
  */
 
-/* We might be used with old compiler settings. */
-#ifndef _LWB_STRING_H
-#define _LWB_STRING_H
+#ifndef _LWB_COMMON_H
+#define _LWB_COMMON_H
 
-#include "lwb_common.h"
-
-#include <stddef.h>
+#include <features.h>
 
 /**
- * Provide the standard strndupa signature
+ * Scream loudly into the void if anyone tries to use or build libwildebeest
+ * with glibc as it'll brick glibc land.
  */
-char *strndupa(const char *s, size_t n);
 
-#endif /* _LWB_STRING_H */
+#ifdef __GLIBC__
+#error "libwildebeest must not used with glibc programs"
+#endif
+
+#endif /* _LWB_COMMON_H */

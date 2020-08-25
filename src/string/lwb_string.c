@@ -29,6 +29,7 @@
 #include "lwb_string.h"
 
 #include <alloca.h>
+#include <string.h>
 
 /**
  * Implement strndupa privately using LD wrap
