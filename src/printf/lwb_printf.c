@@ -31,7 +31,8 @@
 /**
  * Not yet implemented!
  */
-size_t parse_printf_format(const char *__restrict __fmt, size_t __n, int *__restrict __argtypes)
+size_t __wrap_parse_printf_format(const char *__restrict __fmt, size_t __n,
+                                  int *__restrict __argtypes)
 {
 #warning "parse_printf_format: NOT YET IMPLEMENTED"
         return 0;
