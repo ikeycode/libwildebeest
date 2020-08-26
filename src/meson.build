@@ -7,6 +7,7 @@ subdir('include')
 
 # Actually build stuff now
 subdir('string')
+subdir('printf')
 
 # Generate a global pkgconfig for enabling all features
 pkg.generate(name: 'libwildebeest',
@@ -14,5 +15,6 @@ pkg.generate(name: 'libwildebeest',
     subdirs: 'libwildebeest',
     requires: [
         'libwildebeest-string',
+        'libwildebeest-printf',
     ],
 )
