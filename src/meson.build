@@ -9,10 +9,10 @@ subdir('include')
 subdir('string')
 
 # Generate a global pkgconfig for enabling all features
-pkg.generate(name: 'wildebeest',
+pkg.generate(name: 'libwildebeest',
     description: 'Globally enable all libwildebeest features',
     subdirs: 'libwildebeest',
     requires: [
-        'wildebeest-string',
+        'libwildebeest-string',
     ],
 )
