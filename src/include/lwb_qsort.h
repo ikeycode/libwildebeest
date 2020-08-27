@@ -31,9 +31,14 @@
 #include <stddef.h>
 
 /**
- * Comparison function typedef
+ * Compatibility typedefs for glibc source compat
  */
+#ifndef __COMPAR_FN_T
+#define __COMPAR_FN_T
+typedef int (*__compar_fn_t)(const void *, const void *);
+typedef __compar_fn_t comparison_fn_t;
 typedef int (*__compar_d_fn_t)(const void *, const void *, void *);
+#endif
 
 /**
  * GNU compatible qsort_r implementation, avoiding use of globals
