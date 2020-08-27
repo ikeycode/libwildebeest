@@ -9,6 +9,7 @@ subdir('include')
 subdir('string')
 subdir('printf')
 subdir('qsort')
+subdir('gshadow')
 
 # Generate a global pkgconfig for enabling all features
 pkg.generate(name: 'libwildebeest',
