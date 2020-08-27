@@ -8,6 +8,7 @@ subdir('include')
 # Actually build stuff now
 subdir('string')
 subdir('printf')
+subdir('qsort')
 
 # Generate a global pkgconfig for enabling all features
 pkg.generate(name: 'libwildebeest',
@@ -16,5 +17,6 @@ pkg.generate(name: 'libwildebeest',
     requires: [
         'libwildebeest-string',
         'libwildebeest-printf',
+        'libwildebeest-qsort',
     ],
 )
