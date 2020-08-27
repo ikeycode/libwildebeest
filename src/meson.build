@@ -18,5 +18,6 @@ pkg.generate(name: 'libwildebeest',
         'libwildebeest-string',
         'libwildebeest-printf',
         'libwildebeest-qsort',
+        'libwildebeest-gshadow',
     ],
 )
