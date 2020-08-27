@@ -31,7 +31,7 @@
 /**
  * Not yet implemented!
  */
-void qsort_r(void *base, size_t nmemb, size_t size, __compar_d_fn_t compar, void *arg)
+void __wrap_qsort_r(void *base, size_t nmemb, size_t size, __compar_d_fn_t compar, void *arg)
 {
 #warning "qsort_r: NOT YET IMPLEMENTED"
 }

@@ -9,5 +9,6 @@ libqsort = static_library('wildebeest-qsort',
 pkg.generate(libqsort,
     name: 'libwildebeest-qsort',
     subdirs: 'libwildebeest',
+    extra_cflags: '--include=lwb_qsort.h',
     libraries: '-Wl,--wrap=qsort_r',
 )
