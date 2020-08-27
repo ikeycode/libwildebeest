@@ -1,6 +1,7 @@
 headers = [
     'lwb_common.h',
     'lwb_string.h',
+    'lwb_qsort.h',
     'printf.h',
 ]
 
