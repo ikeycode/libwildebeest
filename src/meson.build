@@ -11,6 +11,7 @@ subdir('printf')
 subdir('qsort')
 subdir('gshadow')
 subdir('glob')
+subdir('ftw')
 
 # Generate a global pkgconfig for enabling all features
 pkg.generate(name: 'libwildebeest',
@@ -22,5 +23,6 @@ pkg.generate(name: 'libwildebeest',
         'libwildebeest-qsort',
         'libwildebeest-gshadow',
         'libwildebeest-glob',
+        'libwildebeest-ftw',
     ],
 )
