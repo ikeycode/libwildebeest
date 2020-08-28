@@ -53,9 +53,6 @@ struct sgrp *sgetsgent(const char *__string);
 struct sgrp *fgetsgent(FILE *__stream);
 int putsgent(const struct sgrp *__g, FILE *__stream);
 
-/** Forward reentrants */
-#define getsgnam_r getsgnam
-
 #ifdef __cplusplus
 }
 #endif
