@@ -46,5 +46,6 @@ extern "C" {
 
 #warning "libwildebeest is a security risk at present. Do not use in production or run binaries."
 #define NI_IDN 0
+#define __register_atfork(prepare, parent, child, dso) pthread_atfork(prepare, parent, child)
 
 #endif /* _LWB_COMMON_H */
