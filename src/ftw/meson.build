@@ -10,5 +10,5 @@ pkg.generate(libftw,
     name: 'libwildebeest-ftw',
     subdirs: 'libwildebeest',
     extra_cflags: '--include=lwb_ftw.h',
-    libraries: '-Wl,--wrap=ftw -Wl,--wrap=ftwfree',
+    libraries: '-Wl,--wrap=ftw -Wl,--wrap=nftw',
 )
