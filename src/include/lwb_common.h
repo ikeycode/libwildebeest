@@ -25,6 +25,10 @@
 #ifndef _LWB_COMMON_H
 #define _LWB_COMMON_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <features.h>
 
 /**
@@ -34,6 +38,10 @@
 
 #ifdef __GLIBC__
 #error "libwildebeest must not used with glibc programs"
+#endif
+
+#ifdef __cplusplus
+}
 #endif
 
 #endif /* _LWB_COMMON_H */

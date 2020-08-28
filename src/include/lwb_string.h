@@ -26,6 +26,10 @@
 #ifndef _LWB_STRING_H
 #define _LWB_STRING_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "lwb_common.h"
 
 #include <stddef.h>
@@ -34,5 +38,9 @@
  * Provide the standard strndupa signature
  */
 char *strndupa(const char *s, size_t n);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* _LWB_STRING_H */

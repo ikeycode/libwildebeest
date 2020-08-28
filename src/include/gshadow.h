@@ -26,6 +26,10 @@
 #ifndef _LWB_GSHADOW_H
 #define _LWB_GSHADOW_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "lwb_common.h"
 
 #include <stddef.h>
@@ -48,5 +52,9 @@ struct sgrp *getsgnam(const char *__name);
 struct sgrp *sgetsgent(const char *__string);
 struct sgrp *fgetsgent(FILE *__stream);
 int putsgent(const struct sgrp *__g, FILE *__stream);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* _LWB_GSHADOW_H */

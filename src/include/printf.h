@@ -26,6 +26,10 @@
 #ifndef _LWB_PRINTF_H
 #define _LWB_PRINTF_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "lwb_common.h"
 
 #include <stddef.h>
@@ -44,5 +48,9 @@ enum { PA_INT, PA_CHAR, PA_WCHAR, PA_STRING, PA_WSTRING, PA_POINTER, PA_FLOAT, P
  */
 
 size_t parse_printf_format(const char *__restrict __fmt, size_t __n, int *__restrict __argtypes);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* _LWB_PRINTF_H */

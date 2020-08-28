@@ -26,6 +26,10 @@
 #ifndef _LWB_GLOB_H
 #define _LWB_GLOB_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* Override musl's glob header completely. */
 #ifndef _GLOB_H
 #define _GLOB_H
@@ -88,4 +92,9 @@ void globfree(glob_t *);
 #endif
 
 #endif /* _GLOB_H */
+
+#ifdef __cplusplus
+}
+#endif
+
 #endif /* _LWB_GLOB_H */

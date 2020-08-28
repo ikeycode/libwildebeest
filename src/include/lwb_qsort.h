@@ -26,6 +26,10 @@
 #ifndef _LWB_QSORT_H
 #define _LWB_QSORT_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "lwb_common.h"
 
 #include <stddef.h>
@@ -44,5 +48,9 @@ typedef int (*__compar_d_fn_t)(const void *, const void *, void *);
  * GNU compatible qsort_r implementation, avoiding use of globals
  */
 void qsort_r(void *base, size_t nmemb, size_t size, __compar_d_fn_t compar, void *arg);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* _LWB_QSORT_H */
