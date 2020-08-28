@@ -4,6 +4,7 @@ headers = [
     'lwb_qsort.h',
     'printf.h',
     'gshadow.h',
+    'lwb_glob.h',
 ]
 
 install_headers(headers, subdir: meson.project_name())
