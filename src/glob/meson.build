@@ -10,5 +10,5 @@ pkg.generate(libglob,
     name: 'libwildebeest-glob',
     subdirs: 'libwildebeest',
     extra_cflags: '--include=lwb_glob.h',
-    libraries: '-Wl,--wrap=glob_r',
+    libraries: '-Wl,--wrap=glob -Wl,--wrap=globfree',
 )
