@@ -28,14 +28,16 @@
 
 #include "lwb_ftw.h"
 
-int __wrap_ftw(const char *dir, int (*funcc)(const char *, const struct stat *, int), int descriptors)
+int __wrap_ftw(const char *dir, int (*funcc)(const char *, const struct stat *, int),
+               int descriptors)
 {
-        #warning "ftw not yet implemented"
+#warning "ftw not yet implemented"
         return -1;
 }
 
-int __wrap_nftw(const char *dir, int (*func)(const char *, const struct stat *, int, struct FTW *), int descriptors, int flag)
+int __wrap_nftw(const char *dir, int (*func)(const char *, const struct stat *, int, struct FTW *),
+                int descriptors, int flag)
 {
-        #warning "nftw not yet implemented"
+#warning "nftw not yet implemented"
         return -1;
 }

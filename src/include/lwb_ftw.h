@@ -38,15 +38,15 @@ extern "C" {
 
 #include <stddef.h>
 
-#define FTW_F   1
-#define FTW_D   2
+#define FTW_F 1
+#define FTW_D 2
 #define FTW_DNR 3
-#define FTW_NS  4
-#define FTW_SL  5
-#define FTW_DP  6
+#define FTW_NS 4
+#define FTW_SL 5
+#define FTW_DP 6
 #define FTW_SLN 7
 
-#define FTW_PHYS  1
+#define FTW_PHYS 1
 #define FTW_MOUNT 2
 #define FTW_CHDIR 4
 #define FTW_DEPTH 8
@@ -55,8 +55,8 @@ extern "C" {
 
 #define FTW_CONTINUE 0
 #define FTW_STOP 1
-#define FTW_SKIP_SUBTREE = 3
-#define FTW_SKIP_SIBLINGS = 3
+#define FTW_SKIP_SUBTREE 3
+#define FTW_SKIP_SIBLINGS 3
 
 struct FTW {
         int base;
