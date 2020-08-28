@@ -48,10 +48,22 @@ struct sgrp {
 void setsgent(void);
 void endsgent(void);
 struct sgrp *getsgent(void);
-struct sgrp *getsgnam(const char *__name);
-struct sgrp *sgetsgent(const char *__string);
-struct sgrp *fgetsgent(FILE *__stream);
-int putsgent(const struct sgrp *__g, FILE *__stream);
+struct sgrp *getsgnam(const char *name);
+struct sgrp *sgetsgent(const char *string);
+struct sgrp *fgetsgent(FILE *stream);
+int putsgent(const struct sgrp *g, FILE *stream);
+
+/* Reentrant functions */
+int getsgent_r(struct sgrp *result_buf, char *buffer, size_t buflen, struct sgrp **result);
+
+int getsgnam_r(const char *name, struct sgrp *result_buf, char *buffer, size_t buflen,
+               struct sgrp **result);
+
+int sgetsgent_r(const char *string, struct sgrp *result_buf, char *buffer, size_t buflen,
+                struct sgrp **result);
+
+int fgetsgent_r(FILE *stream, struct sgrp *result_buf, char *buffer, size_t buflen,
+                struct sgrp **result);
 
 #ifdef __cplusplus
 }

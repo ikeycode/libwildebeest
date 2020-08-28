@@ -67,3 +67,30 @@ int __wrap_putsgent(const struct sgrp *__g, FILE *__stream)
 #warning "putsgent not yet implemented"
         return -1;
 }
+
+int __wrap_getsgent_r(struct sgrp *result_buf, char *buffer, size_t buflen, struct sgrp **result)
+{
+#warning "getsgent_r not yet implemented"
+        return -1;
+}
+
+int __wrap_getsgnam_r(const char *name, struct sgrp *result_buf, char *buffer, size_t buflen,
+                      struct sgrp **result)
+{
+#warning "getsgnam_r not yet implemented"
+        return -1;
+}
+
+int __wrap_sgetsgent_r(const char *string, struct sgrp *result_buf, char *buffer, size_t buflen,
+                       struct sgrp **result)
+{
+#warning "sgetsgent_r not yet implemented"
+        return -1;
+}
+
+int __wrap_fgetsgent_r(FILE *stream, struct sgrp *result_buf, char *buffer, size_t buflen,
+                       struct sgrp **result)
+{
+#warning "fgetsgent_r not yet implemented"
+        return -1;
+}
