@@ -12,6 +12,7 @@ subdir('qsort')
 subdir('gshadow')
 subdir('glob')
 subdir('ftw')
+subdir('netdb')
 
 # Generate a global pkgconfig for enabling all features
 pkg.generate(name: 'libwildebeest',
@@ -24,5 +25,6 @@ pkg.generate(name: 'libwildebeest',
         'libwildebeest-gshadow',
         'libwildebeest-glob',
         'libwildebeest-ftw',
+        'libwildebeest-netdb',
     ],
 )
