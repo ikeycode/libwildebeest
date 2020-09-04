@@ -9,5 +9,5 @@ libnetdb = static_library('wildebeest-netdb',
 pkg.generate(libnetdb,
     name: 'libwildebeest-netdb',
     subdirs: 'libwildebeest',
-    libraries: '-Wl,--wrap=sethostent -Wl,--wrap=endhostent -Wl,--wrap=gethostent -Wl,--wrap=gethostent_r',
+    libraries: '-Wl,--wrap=sethostent -Wl,--wrap=endhostent -Wl,--wrap=gethostent -Wl,--wrap=gethostent_r -Wl,--wrap=setnetent -Wl,--wrap=endnetent -Wl,--wrap=getnetent -Wl,--wrap=getnetent_r',
 )
