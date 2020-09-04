@@ -6,7 +6,7 @@ libnetdb = static_library('wildebeest-netdb',
     include_directories: root_includedir,
 )
 
-pkg.generate(libgshadow,
+pkg.generate(libnetdb,
     name: 'libwildebeest-netdb',
     subdirs: 'libwildebeest',
     libraries: '-Wl,--wrap=sethostent -Wl,--wrap=endhostent -Wl,--wrap=gethostent -Wl,--wrap=gethostent_r',
