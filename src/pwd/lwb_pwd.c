@@ -28,8 +28,8 @@
 
 #include "lwb_pwd.h"
 
-int fgetpwent_r(FILE *__restrict stream, struct passwd *__restrict resultbuf,
-                char *__restrict buffer, size_t buflen, struct passwd **__restrict result)
+int __wrap_fgetpwent_r(FILE *__restrict stream, struct passwd *__restrict resultbuf,
+                       char *__restrict buffer, size_t buflen, struct passwd **__restrict result)
 {
 #warning "fgetpwent_r not yet implemented"
         return -1;
