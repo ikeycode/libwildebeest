@@ -6,6 +6,7 @@ headers = [
     'gshadow.h',
     'lwb_glob.h',
     'lwb_ftw.h',
+    'lwb_pwd.h',
 ]
 
 install_headers(headers, subdir: meson.project_name())
