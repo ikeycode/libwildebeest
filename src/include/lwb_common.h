@@ -37,7 +37,7 @@ extern "C" {
  */
 
 #ifdef __GLIBC__
-#error "libwildebeest must not used with glibc programs"
+#error "libwildebeest must not be used with glibc programs"
 #endif
 
 #ifdef __cplusplus
