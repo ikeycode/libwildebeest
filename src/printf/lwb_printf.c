@@ -28,6 +28,14 @@
 
 #include "printf.h"
 
+enum StageFlags {
+    STAGE_NONE = 0,
+    STAGE_FLAGS = 1 << 0,
+    STAGE_WIDTH = 1 << 1,
+    STAGE_PRECISION = 1 << 2,
+    STAGE_LENGTHMOD = 1 << 3,
+};
+
 static inline void __assign_argtypes(int *__restrict __argtypes, size_t pos, size_t max, int value)
 {
         if (pos < max)
@@ -40,6 +48,7 @@ size_t __wrap_parse_printf_format(const char *__restrict __fmt, size_t __n,
         const char *p = NULL;
         int type = 0;
         int in_format = 0;
+        enum StageFlags stage = STAGE_NONE;
         size_t res = 0;
 
         if (!__fmt)
@@ -49,6 +58,7 @@ size_t __wrap_parse_printf_format(const char *__restrict __fmt, size_t __n,
                 if (in_format == 0 && *p == '%') {
                         in_format = 1;
                         type = 0;
+                        stage = STAGE_NONE;
                 } else if (in_format == 1 && *p == '%') {
                         in_format = 0;
                 } else if (in_format) {
@@ -106,27 +116,31 @@ size_t __wrap_parse_printf_format(const char *__restrict __fmt, size_t __n,
 
                         /* Length modifiers */
                         case 'L':
+                                stage |= STAGE_LENGTHMOD;
                                 type |= PA_FLAG_LONG_LONG;
                                 break;
                         case 'j':
                         case 'z':
                         case 't':
+                                stage |= STAGE_LENGTHMOD;
                                 type |= PA_FLAG_LONG;
                                 break;
                         case 'l':
+                                stage |= STAGE_LENGTHMOD;
                                 if ((type & PA_FLAG_LONG) != 0 || (type & PA_FLAG_LONG_LONG) != 0)
                                         type |= PA_FLAG_LONG_LONG;
                                 else
                                         type |= PA_FLAG_LONG;
                                 break;
                         case 'h':
+                                stage |= STAGE_LENGTHMOD;
                                 if ((type & PA_FLAG_SHORT) != 0)
                                         type = PA_CHAR;
                                 else
                                         type |= PA_FLAG_SHORT;
                                 break;
 
-                        /* Numbers and flags */
+                        /* Field width*/
                         case '0':
                         case '1':
                         case '2':
@@ -137,14 +151,39 @@ size_t __wrap_parse_printf_format(const char *__restrict __fmt, size_t __n,
                         case '7':
                         case '8':
                         case '9':
+                                if ((stage & STAGE_LENGTHMOD) == 0 && (stage & STAGE_PRECISION) == 0)
+                                    stage |= STAGE_WIDTH;
+                                else if ((stage & STAGE_LENGTHMOD) == 0 && (stage & STAGE_PRECISION) != 0)
+                                    ;
+                                else
+                                    in_format = 0;
+                                break;
+                        /* Precision */
                         case '.':
+                                stage |= STAGE_PRECISION;
+                                break;
+                        /* Flags */
                         case '#':
                         case '+':
                         case '-':
                         case '\'':
+                                if ((stage & (STAGE_LENGTHMOD | STAGE_WIDTH | STAGE_PRECISION)) == 0)
+                                    stage |= STAGE_FLAGS;
+                                else
+                                    in_format = 0;
+                                break;
+                        /* Special formatting */
+                        case '$':
+                                if ((stage & STAGE_LENGTHMOD) != 0)
+                                    in_format = 0;
+                                else if ((stage & (STAGE_WIDTH | STAGE_PRECISION)) == 0)
+                                    in_format = 0;
                                 break;
                         case '*':
-                                __assign_argtypes(__argtypes, res++, __n, PA_INT);
+                                if ((stage & STAGE_LENGTHMOD) == 0)
+                                    __assign_argtypes(__argtypes, res++, __n, PA_INT);
+                                else
+                                    in_format = 0;
                                 break;
 
                         default:
@@ -155,5 +194,5 @@ size_t __wrap_parse_printf_format(const char *__restrict __fmt, size_t __n,
                         in_format = 0;
         }
 
-        return res > 0 ? res - 1 : res;
+        return res;
 }
