@@ -29,11 +29,11 @@
 #include "printf.h"
 
 enum StageFlags {
-    STAGE_NONE = 0,
-    STAGE_FLAGS = 1 << 0,
-    STAGE_WIDTH = 1 << 1,
-    STAGE_PRECISION = 1 << 2,
-    STAGE_LENGTHMOD = 1 << 3,
+        STAGE_NONE = 0,
+        STAGE_FLAGS = 1 << 0,
+        STAGE_WIDTH = 1 << 1,
+        STAGE_PRECISION = 1 << 2,
+        STAGE_LENGTHMOD = 1 << 3,
 };
 
 static inline void __assign_argtypes(int *__restrict __argtypes, size_t pos, size_t max, int value)
@@ -151,12 +151,14 @@ size_t __wrap_parse_printf_format(const char *__restrict __fmt, size_t __n,
                         case '7':
                         case '8':
                         case '9':
-                                if ((stage & STAGE_LENGTHMOD) == 0 && (stage & STAGE_PRECISION) == 0)
-                                    stage |= STAGE_WIDTH;
-                                else if ((stage & STAGE_LENGTHMOD) == 0 && (stage & STAGE_PRECISION) != 0)
-                                    ;
+                                if ((stage & STAGE_LENGTHMOD) == 0 &&
+                                    (stage & STAGE_PRECISION) == 0)
+                                        stage |= STAGE_WIDTH;
+                                else if ((stage & STAGE_LENGTHMOD) == 0 &&
+                                         (stage & STAGE_PRECISION) != 0)
+                                        ;
                                 else
-                                    in_format = 0;
+                                        in_format = 0;
                                 break;
                         /* Precision */
                         case '.':
@@ -167,23 +169,24 @@ size_t __wrap_parse_printf_format(const char *__restrict __fmt, size_t __n,
                         case '+':
                         case '-':
                         case '\'':
-                                if ((stage & (STAGE_LENGTHMOD | STAGE_WIDTH | STAGE_PRECISION)) == 0)
-                                    stage |= STAGE_FLAGS;
+                                if ((stage & (STAGE_LENGTHMOD | STAGE_WIDTH | STAGE_PRECISION)) ==
+                                    0)
+                                        stage |= STAGE_FLAGS;
                                 else
-                                    in_format = 0;
+                                        in_format = 0;
                                 break;
                         /* Special formatting */
                         case '$':
                                 if ((stage & STAGE_LENGTHMOD) != 0)
-                                    in_format = 0;
+                                        in_format = 0;
                                 else if ((stage & (STAGE_WIDTH | STAGE_PRECISION)) == 0)
-                                    in_format = 0;
+                                        in_format = 0;
                                 break;
                         case '*':
                                 if ((stage & STAGE_LENGTHMOD) == 0)
-                                    __assign_argtypes(__argtypes, res++, __n, PA_INT);
+                                        __assign_argtypes(__argtypes, res++, __n, PA_INT);
                                 else
-                                    in_format = 0;
+                                        in_format = 0;
                                 break;
 
                         default:
