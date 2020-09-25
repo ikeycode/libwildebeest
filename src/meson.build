@@ -14,6 +14,7 @@ subdir('glob')
 subdir('ftw')
 subdir('netdb')
 subdir('pwd')
+subdir('stdlib')
 
 # Generate a global pkgconfig for enabling all features
 pkg.generate(name: 'libwildebeest',
@@ -28,5 +29,6 @@ pkg.generate(name: 'libwildebeest',
         'libwildebeest-ftw',
         'libwildebeest-netdb',
         'libwildebeest-pwd',
+        'libwildebeest-stdlib',
     ],
 )

@@ -7,6 +7,7 @@ headers = [
     'lwb_glob.h',
     'lwb_ftw.h',
     'lwb_pwd.h',
+    'lwb_stdlib.h',
 ]
 
 install_headers(headers, subdir: meson.project_name())
