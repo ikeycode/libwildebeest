@@ -311,12 +311,16 @@ static const char *__brace_next(const char *p)
         return p && *p ? p : NULL;
 }
 
-static int __parse_brace(const char *s, char *buf, int bufpos, int maxlen, int pos, int flags,
-                         char *res, int (*errfunc)(const char *path, int err), struct match **tail)
+static int __parse_brace(const char *s, char *buf, unsigned int bufpos, unsigned int maxlen,
+                         size_t pos, int flags, char *res,
+                         int (*errfunc)(const char *path, int err), struct match **tail)
 {
         const char *iter = s;
-        if (!buf)
+        int need_free_buf = 0;
+        if (!buf) {
                 buf = calloc(1, maxlen);
+                need_free_buf = 1;
+        }
 
         for (; iter && *iter; iter++) {
                 if (*iter == '{') {
@@ -343,6 +347,7 @@ static int __parse_brace(const char *s, char *buf, int bufpos, int maxlen, int p
                                                       res,
                                                       errfunc,
                                                       tail);
+                                        free(newstring);
                                         memset(buf + bufpos, 0, maxlen - bufpos);
                                         if (*item == '}' || !*item)
                                                 break;
@@ -354,8 +359,12 @@ static int __parse_brace(const char *s, char *buf, int bufpos, int maxlen, int p
                 } else
                         buf[bufpos++] = *iter;
         }
-        if (!*iter)
-                return do_glob(res, pos, 0, buf, flags, errfunc, tail);
+        if (!*iter) {
+                int r = do_glob(res, pos, 0, buf, flags, errfunc, tail);
+                if (need_free_buf == 1)
+                        free(buf);
+                return r;
+        }
         return 0;
 }
 
