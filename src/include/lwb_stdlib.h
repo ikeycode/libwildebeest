@@ -36,8 +36,7 @@ extern "C" {
 #include <stddef.h>
 
 long long strtoll_l(const char *restrict s, char **restrict p, int base, locale_t l);
-unsigned long long strtoull_l(const char *restrict s, char **restrict p, int base,
-                                     locale_t l);
+unsigned long long strtoull_l(const char *restrict s, char **restrict p, int base, locale_t l);
 
 #ifdef __cplusplus
 }
